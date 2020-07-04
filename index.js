@@ -51,11 +51,16 @@ client.on('message', async message => {
 				return client.channels.cache.find(TextChannel => TextChannel.name === channel).send('No one said they were Hitler.');
 			}			
 
+			// console.log(players); 
+
+			const hitler = players.get('hitler').map(a => a.username); 
 			const fascists = players.get('fascist').map(a => a.username); 
 						
 			for (const player of players.get('fascist')) {
-				client.users.cache.get(player.id).send(`These are your fellow dirty fascists: ${fascists.toString()}. Hitler is ${players.get('hitler').username}.`);
+				client.users.cache.get(player.id).send(`These are your fellow dirty fascists: ${fascists.toString()}. Hitler is ${hitler}.`);
 			}	
+
+			return client.channels.cache.find(TextChannel => TextChannel.name === channel).send("All party memberships have been set and all fascists DM'd. Good luck and kill Hitler!");
 
 		}
 	}	
