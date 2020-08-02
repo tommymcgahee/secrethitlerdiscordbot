@@ -67,3 +67,19 @@ client.on('message', async message => {
 });
 
 client.login(token);
+
+// Docker graceful exit commands
+const process = require('process');
+
+process.on('SIGINT', function onSigint() {
+	client.shutdown();
+});
+
+process.on('SIGTERM', function onSigterm() {
+	client.shutdown();
+});
+
+client.shutdown = function () {
+	// clean up your resources and exit 
+	process.exit();
+};

@@ -17,3 +17,13 @@ Use this [discordjs guide](https://discordjs.guide/preparations/setting-up-a-bot
 ## Requirements
 
 Currently compatible with [Node.js 10, 12 and 14](https://github.com/tommymcgahee/secrethitlerdiscordbot/actions?query=workflow%3ANode). 
+
+## Docker Requirements
+
+`Docker Compose` is required. 
+
+To run nodemon and set `NODE_ENV` to development:  
+`docker-compose -f docker-compose.yml -f development.yml up`
+
+To build for production:  
+`docker-compose up`
